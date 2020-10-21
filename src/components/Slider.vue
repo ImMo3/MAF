@@ -14,7 +14,25 @@ export default {
       slides: villasData,
     };
   },
-  mounted: function () {},
+  mounted: function () {
+    const images = document.getElementsByClassName("customImage");
+
+    images.forEach((image) => {
+      image.addEventListener("mouseover", function () {
+        document.getElementsByClassName("details-arrow").forEach((element) => {
+          element.classList.add("ml-16");
+          element.classList.remove("ml-4");
+        });
+      });
+
+      image.addEventListener("mouseout", function () {
+        document.getElementsByClassName("details-arrow").forEach((element) => {
+          element.classList.add("ml-4");
+          element.classList.remove("ml-16");
+        });
+      });
+    });
+  },
   methods: {
     loadImg(imgPath) {
       return images("./" + imgPath);
