@@ -1,0 +1,327 @@
+.slideshow-container {
+    position: relative;
+}
+
+.mySlides {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.slider-row {
+    height: 90vh;
+
+    .slider-first-column {
+        padding-left: 10%;
+
+        .first-column-container {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            height: 100%;
+        }
+    }
+}
+
+.details-arrow {
+    transition: transform 0.2s;
+}
+
+.customImage {
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    background-position: center center;
+    position: absolute;
+}
+
+.details-button {
+    font-family: "Gothic A1", sans-serif;
+    letter-spacing: 2px;
+    background-color: #ffffff;
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    bottom: 0;
+    width: 222px;
+    height: 71px;
+    text-align: start;
+    align-items: flex-end;
+    display: flex;
+}
+
+.prev,
+.next {
+    font-family: "Gothic A1", sans-serif;
+    font-weight: 600;
+    letter-spacing: 3px;
+    cursor: pointer;
+    position: absolute;
+    top: 500px;
+    left: 250px;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 20%;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    left: 350px;
+}
+
+.prev:hover,
+.next:hover {
+    transition: ease-in 0.01ms;
+    border-bottom: #bdbdbd 1px solid;
+}
+
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.villa-name {
+    font-size: 64px;
+    z-index: 3;
+    word-spacing: 100vw;
+}
+
+.villa-location {
+    font-size: 12px;
+    font-family: "Gothic A1", sans-serif;
+}
+
+.villa-location::after {
+    content: "";
+    z-index: 10;
+    background: #f2f2f2;
+    position: absolute;
+    height: 100%;
+    left: 15%;
+    width: 0.5px;
+}
+
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+.dot {
+    position: absolute;
+    bottom: 0;
+    color: #e0e0e0;
+    z-index: 10;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.slide-index {
+    padding-right: 3rem;
+    font-size: 24px;
+}
+
+.slides-numbers {
+    padding-left: 3rem;
+    font-size: 24px;
+}
+
+.slash-char {
+    font-size: 24px;
+}
+
+.header-height {
+    height: 100vh;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+}
+
+.menu-burger-icon {
+    outline: none;
+}
+
+@media (max-width: 1023px) {
+    .prev {
+        left: 200px
+    }
+
+    .next {
+        left: 300px;
+    }
+
+    .header-height {
+        height: 10%;
+    }
+
+    .header-content {
+        flex-direction: row;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .remove-margin {
+        margin: 0 !important;
+    }
+
+    .social-media-icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 30%;
+        padding: 0 16px;
+    }
+
+    .menu-burger-icon {
+        padding: 0 16px;
+    }
+
+    .slider-first-column {
+        padding-left: 5% !important;
+    }
+}
+
+@media (max-width: 764px) {
+
+    .prev,
+    .next {
+        top: 350px;
+        left: 200px;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px 0;
+    }
+
+    .next {
+        left: 300px;
+    }
+
+    .dot {
+        display: none;
+    }
+
+    .slider-first-column {
+        padding-left: 1%;
+    }
+}
+
+@media (max-width: 425px) {
+
+    .prev,
+    .next {
+        top: 350px;
+        left: 150px;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px 0;
+    }
+
+    .next {
+        left: 250px;
+    }
+
+    .slider-first-column {
+        padding-left: 1%;
+    }
+}
+
+$slide-swipe: 0.9s;
+$text-cut-up: 0.5s;
+
+@keyframes slideLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.mySlides {
+
+    .villa-location {
+        opacity: 0;
+        transition-delay: 1;
+        transition-duration: 0.5s;
+        transition-property: opacity;
+        will-change: opacity, transform;
+    }
+
+    .villa-name,
+    .customImage {
+        opacity: 0;
+        transition-delay: $slide-swipe + $text-cut-up;
+        transition-duration: 0s;
+        transition-property: opacity;
+        will-change: opacity, transform;
+    }
+
+    &.active {
+
+        .villa-location {
+            transition-delay: 0.5s;
+            transition-duration: 0.5;
+            opacity: 1;
+        }
+
+        .villa-name,
+        .customImage {
+            transition-delay: 0.5s;
+            transition-duration: 0.5;
+            opacity: 1;
+
+            animation-delay: $text-cut-up;
+            animation-name: slideRight;
+            animation-duration: $slide-swipe;
+            animation-timing-function: cubic-bezier(0.18, 0.54, 0.52, 0.93);
+            pointer-events: none;
+        }
+    }
+
+    &:not(.active) {
+
+        .slash-char {
+            transform: rotate(45deg);
+        }
+
+        .villa-name,
+        .customImage {
+            animation-delay: $text-cut-up;
+            animation-name: slideLeft;
+            animation-duration: $slide-swipe;
+            animation-timing-function: cubic-bezier(0.18, 0.54, 0.52, 0.93);
+            pointer-events: none;
+        }
+    }
+}

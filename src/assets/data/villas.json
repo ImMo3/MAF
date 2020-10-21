@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "villaName": "Jumehira Villa",
+        "villaLocation": "Dubai, UAE",
+        "villaImg": "image-4.png"
+    },
+    {
+        "id": 2,
+        "villaName": "Cumbaya Villa",
+        "villaLocation": "Quito, Ecuador",
+        "villaImg": "image-6.png"
+    }
+]
