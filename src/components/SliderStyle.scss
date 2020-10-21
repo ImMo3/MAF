@@ -24,7 +24,12 @@
 }
 
 .details-arrow {
-    transition: transform 0.2s;
+    transition: all 300ms;
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
 }
 
 .customImage {
@@ -33,6 +38,11 @@
     width: 100%;
     background-position: center center;
     position: absolute;
+    transition: transform 5s;
+
+    &:hover {
+        transform: scale(1.2);
+    }
 }
 
 .details-button {
@@ -40,6 +50,7 @@
     letter-spacing: 2px;
     background-color: #ffffff;
     position: absolute;
+    font-size: 12px;
     z-index: 5;
     left: 0;
     bottom: 0;
@@ -53,11 +64,11 @@
 .prev,
 .next {
     font-family: "Gothic A1", sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 3px;
     cursor: pointer;
     position: absolute;
-    top: 500px;
+    top: 450px;
     left: 250px;
     font-size: 12px;
     line-height: 15px;
@@ -91,6 +102,7 @@
     font-size: 64px;
     z-index: 3;
     word-spacing: 100vw;
+    margin-bottom: 100px;
 }
 
 .villa-location {
@@ -118,25 +130,36 @@
 
 .dot {
     position: absolute;
-    bottom: 0;
+    top: 660px;
+    left: 100px;
     color: #e0e0e0;
     z-index: 10;
-    display: inline-block;
+    display: flex;
     transition: background-color 0.6s ease;
 }
 
 .slide-index {
-    padding-right: 3rem;
+    padding-right: 2rem;
     font-size: 24px;
 }
 
 .slides-numbers {
-    padding-left: 3rem;
+    padding-left: 2rem;
     font-size: 24px;
 }
 
 .slash-char {
-    font-size: 24px;
+    transition: transform 0.6s ease;
+
+    &.evenImage {
+        opacity: 1;
+        transform: rotate(180deg);
+    }
+
+    &:not(.evenImage) {
+        opacity: 1;
+        transform: rotate(90deg);
+    }
 }
 
 .header-height {
@@ -153,6 +176,13 @@
 
 .menu-burger-icon {
     outline: none;
+}
+
+.disabled-link {
+    cursor: default;
+    pointer-events: none;
+    text-decoration: none;
+    color: #e0e0e0;
 }
 
 @media (max-width: 1023px) {
@@ -201,7 +231,7 @@
 
     .prev,
     .next {
-        top: 350px;
+        top: 250px;
         left: 200px;
         width: auto;
         margin-top: -22px;
@@ -219,13 +249,17 @@
     .slider-first-column {
         padding-left: 1%;
     }
+
+    .image-container {
+        height: 50vh;
+    }
 }
 
 @media (max-width: 425px) {
 
     .prev,
     .next {
-        top: 350px;
+        top: 250px;
         left: 150px;
         width: auto;
         margin-top: -22px;
@@ -305,15 +339,10 @@ $text-cut-up: 0.5s;
             animation-name: slideRight;
             animation-duration: $slide-swipe;
             animation-timing-function: cubic-bezier(0.18, 0.54, 0.52, 0.93);
-            pointer-events: none;
         }
     }
 
     &:not(.active) {
-
-        .slash-char {
-            transform: rotate(45deg);
-        }
 
         .villa-name,
         .customImage {
