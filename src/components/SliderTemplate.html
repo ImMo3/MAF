@@ -1,0 +1,71 @@
+<main>
+    <div class="flex flex-wrap mt-16 remove-margin">
+        <div class="w-full sm:w-6/6 md:w-6/6 lg:w-5/6 xl:w-5/6">
+            <!-- slider content -->
+            <div class="slideshow-container">
+
+                <div v-for="(slide, index) in slides" v-bind:class="{ active: index === currentSlide }"
+                    v-bind:key="slide.id" class="mySlides">
+                    <div class="flex flex-wrap -mb-4 slider-row">
+                        <!-- first column -->
+                        <div class="w-full sm:w-2/2 md:w-1/2 lg:w-1/2 xl:w-1/2 slider-first-column">
+                            <div class="first-column-container">
+                                <div class="villa-location">
+                                    {{ slide.villaLocation }}
+                                </div>
+
+                                <div v-cloak class="villa-name">
+                                    {{ slide.villaName }}
+                                </div>
+
+                                <div style="position: relative;">
+                                    <div class="dot">
+                                        <span class="slide-index">{{ currentSlide + 1 }}</span>
+                                        <span class="slash-char">/</span>
+                                        <span class="slides-numbers">{{ slides.length }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Next and previous buttons -->
+                            <a class="prev" v-on:click="plusSlides(-1)">PREV.</a>
+                            <a class="next" v-on:click="plusSlides(1)">NEXT</a>
+                        </div>
+
+                        <!-- second column -->
+                        <div class="w-full sm:w-2/2 md:w-1/2 lg:w-1/2 xl:w-1/2"
+                            style="position: relative; overflow: hidden">
+                            <button class="details-button">
+                                Detalis
+                                <span class="ml-4 details-arrow"><img src="@/assets/images/arrow-2-right-long.svg"
+                                        alt="arrow" /></span>
+                            </button>
+                            <div v-bind:style="{'background-image': 'url(' + loadImg(slide.villaImg) + ')'}"
+                                class="customImage"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- header -->
+        <div
+            class="w-full order-first sm:order-first md:order-first lg:order-none sm:w-6/6 md:w-6/6 lg:w-1/6 xl:w-1/6 header-height">
+            <div class="header-content">
+                <button class="menu-burger-icon">
+                    <img src="@/assets/images/menu-burger-2.svg" alt="" />
+                </button>
+                <div class="logo">
+                    <img src="@/assets/images/logo.png" alt="" />
+                </div>
+                <div class="social-media-icons">
+                    <div><img src="@/assets/images/youtube.svg" alt="" /></div>
+                    <div class="mt-5 mb-5">
+                        <img src="@/assets/images/linkedin.svg" alt="" />
+                    </div>
+                    <div><img src="@/assets/images/instagram.svg" alt="" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
