@@ -20,7 +20,7 @@ export default {
       return images("./" + imgPath);
     },
     openNav() {
-      document.getElementById("st-container").classList.toggle("st-effect");
+      document.getElementById("st-container").classList.toggle("st-effect-1");
       document.getElementById("st-container").classList.toggle("st-menu-open");
     },
     plusSlides(n) {
